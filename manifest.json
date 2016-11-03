@@ -1,0 +1,55 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_ext_name__",
+  "description": "__MSG_ext_desc__",
+  "default_locale": "en",
+  "author": "BTC.COM",
+  "version": "1.1.0",
+  "browser_action": {
+    "default_popup": "public/popup.html",
+    "default_icon": {
+      "19": "images/icon-19.png",
+      "38": "images/icon-38.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon-16.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "contextMenus",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "scripts": [
+      "public/assets/background.bundle.js"
+    ],
+    "persistent": true
+  },
+  "web_accessible_resources": [
+    "src/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "css": [
+        "src/style/modules/style.less"
+      ],
+      "js": [
+        "src/components/lookup/jquery.min.js",
+        "src/components/lookup/bitcore.min.js",
+        "public/assets/lookup.bundle.js",
+        "src/components/lookup/tool.js"
+      ]
+    }
+  ],
+  "options_page":  "public/option.html",
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
+}
