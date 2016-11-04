@@ -17,7 +17,7 @@ storage.getOptions('query.dropdown.enable')
 function isLink() {
     if (window.event.srcElement.tagName == "A") {
         var preworth = worth;
-        worth = $.trim(window.event.srcElement.innerText);
+        worth = $.trim(window.event.srcElement.href.split('/')[window.event.srcElement.href.split('/').length-1]);
         if (looktype()) {
             clearSlct();//清除选中元素
             targetElement = window.event.target;
